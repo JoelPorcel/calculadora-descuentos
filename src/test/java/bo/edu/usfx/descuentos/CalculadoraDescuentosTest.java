@@ -60,4 +60,10 @@ class CalculadoraDescuentosTest {
         assertEquals(90.00, calculadora.descuentoPorCantidad(5, 100.0), 0.001);
         assertEquals(100.00, calculadora.descuentoPorCantidad(2, 100.0), 0.001);
     }
+
+    @Test
+    void cantidadNegativaLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, 
+            () -> calculadora.descuentoPorCantidad(-5, 100.0));
+    }
 }
