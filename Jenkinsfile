@@ -27,6 +27,12 @@ pipeline {
                 sh 'mvn -B test'
             }
         }
+        stage('Cobertura') {
+            steps {
+                sh 'mvn -B verify'
+                archiveArtifacts artifacts: 'target/site/jacoco/**/*', fingerprint: true
+            }
+        }
         stage('Empaquetar') {
             steps {
                 sh 'mvn -B -DskipTests package'

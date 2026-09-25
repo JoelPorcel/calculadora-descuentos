@@ -26,4 +26,13 @@ public class CalculadoraDescuentos {
     private double redondear(double valor) {
         return Math.round(valor * 100.0) / 100.0;
     }
+
+    public double descuentoPorCantidad(int cantidad, double precioOriginal) {
+        if (cantidad >= 10) {
+            return calcularPrecioFinal(precioOriginal, 20);
+        } else if (cantidad >= 5) {
+            return calcularPrecioFinal(precioOriginal, 10);
+        }
+        return precioOriginal;
+    }
 }
