@@ -28,6 +28,9 @@ public class CalculadoraDescuentos {
     }
 
     public double descuentoPorCantidad(int cantidad, double precioOriginal) {
+        if (cantidad < 0) {
+            throw new IllegalArgumentException("La cantidad no puede ser negativa");
+        }
         if (cantidad >= 10) {
             return calcularPrecioFinal(precioOriginal, 20);
         } else if (cantidad >= 5) {
