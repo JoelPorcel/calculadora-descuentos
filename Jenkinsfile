@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Pruebas') {
             steps {
-                sh 'mvn -B test -Dmaven.test.failure.ignore=true'
+                sh 'mvn -B test'
             }
         }
         stage('Empaquetar') {
@@ -36,6 +36,9 @@ pipeline {
     }
 
     post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+        }
         success {
             echo 'Build y pruebas exitosas'
         }
